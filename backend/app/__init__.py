@@ -7,8 +7,8 @@ def create_app():
     app = Flask(__name__)
     app.config["DEBUG"] = True
 
-    # Register Blueprints
-    #from app.api.routes import api_blueprint
-    #app.register_blueprint(api_blueprint)
+    from app.api import housing_blueprint, auth_blueprint
+    app.register_blueprint(housing_blueprint, url_prefix='/api/housing')
+    app.register_blueprint(auth_blueprint, url_prefix='/api/auth')
 
     return app
